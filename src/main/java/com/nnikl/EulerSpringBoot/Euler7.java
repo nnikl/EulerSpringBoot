@@ -14,14 +14,14 @@ import java.util.List;
 @RequiredArgsConstructor
 public class Euler7 {
 
+    public static final long LIMIT = 200_000L;
     private final PrimeNumbers primeNumbers;
 
     /**
      * Executes the logic after the application starts.
      */
-    @PostConstruct
-    public long solveEuler7() {
-        List<Long> primes = primeNumbers.getPrimesUpTo(200_000L);
-        return primes.get(10000);
+    public long solveEuler7(int nthPrimeNumberIndex) {
+        List<Long> primes = primeNumbers.getPrimesUpTo(LIMIT);
+        return primes.get(nthPrimeNumberIndex);
     }
 }

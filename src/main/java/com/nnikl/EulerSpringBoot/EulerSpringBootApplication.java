@@ -9,7 +9,5 @@ import org.springframework.context.ApplicationContext;
 public class EulerSpringBootApplication {
     public static void main(String[] args) {
         ApplicationContext context = SpringApplication.run(EulerSpringBootApplication.class, args);
-        var euler7 = context.getBean(Euler7.class);
-        System.out.println("Result: " + euler7.solveEuler7());
     }
 }
