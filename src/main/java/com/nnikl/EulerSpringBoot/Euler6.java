@@ -21,6 +21,3 @@ public class Euler6 {
     }
 
 }
-
-
-//ApplicationContext context = StringApplication.run(EulerSpringBootApplication.class, args);
