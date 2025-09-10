@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 public class HomeController {
 
     @Autowired
-    private PrimeNumbers primeNumbers;
+    private Euler7 euler7;
 
     /**
      * Returns a simple 404 response when accessing the root URL.
@@ -26,28 +26,15 @@ public class HomeController {
 
     /**
      * Returns the nth prime number based on the URL input.
+     * The first PrimeNumber has an index of 1.
      *
-     * Example: /primeNumbers/10001 → returns the 10001st prime number
-     *
-     * @param n Index of the desired prime number
+     * @param index Index of the desired prime number
      * @return ResponseEntity with the nth prime number
      */
-    @GetMapping(value = "/primeNumbers/{n}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<String> getNthPrime(@PathVariable("n") int n) {
-        // Safety check for valid input range
-        if (n <= 0 || n > 100_000) {
-            return ResponseEntity.badRequest().body("Invalid index: " + n);
-        }
-
-        // Estimate upper bound for prime search
-        long upperBound = n * 20L;
-        var primes = primeNumbers.getPrimesUpTo(upperBound);
-
-        if (primes.size() < n) {
-            return ResponseEntity.status(500).body("Not enough primes found.");
-        }
-
-        long result = primes.get(n - 1); // List index starts at 0
-        return ResponseEntity.ok("The " + n + "th prime number is: " + result);
+    @GetMapping(value = "/primeNumbers/{index}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Long> getNthPrime(@PathVariable("index") int index) {
+        int correctedIndex = index - 1;
+        long result = euler7.solveEuler7(correctedIndex);
+        return ResponseEntity.status(200).body(result);
     }
 }
