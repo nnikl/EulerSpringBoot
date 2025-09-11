@@ -13,8 +13,8 @@ public class PrimeNumbers {
     /**
      * Generates a list of prime numbers up to a given limit.
      *
-     * @param limit the upper bound for prime number generation
-     * @return a list of prime numbers up to the limit
+     * @param limit the upper bound for prime number generation.
+     * @return a list of prime numbers up to the limit.
      */
     public List<Long> getPrimesUpTo(long limit) {
         List<Long> primes = new LinkedList<>();
@@ -28,9 +28,9 @@ public class PrimeNumbers {
 
     /**
      * Checks whether a number is prime.
-     * i*i checks only up to necessary limit for prime testing
-     * @param number the number to check
-     * @return true if the number is prime, false otherwise
+     * i*i checks only up to necessary limit for prime testing.
+     * @param number the number to check.
+     * @return true if the number is prime, false otherwise.
      */
     public boolean isPrime(long number) {
         if (number < 2) return false;
