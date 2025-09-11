@@ -1,6 +1,5 @@
 package com.nnikl.EulerSpringBoot;
 
-import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -14,14 +13,14 @@ import java.util.List;
 @RequiredArgsConstructor
 public class Euler7 {
 
-    public static final long LIMIT = 200_000L;
-    private final PrimeNumbers primeNumbers;
+    public static final long LIMIT = 2_000_000L;
+    private final MathHelper setLimitPrimeNumbers;
 
     /**
-     * Executes the logic after the application starts.
+     * sets a Limit for the primes
      */
     public long solveEuler7(int nthPrimeNumberIndex) {
-        List<Long> primes = primeNumbers.getPrimesUpTo(LIMIT);
+        List<Long> primes = setLimitPrimeNumbers.getPrimesUpTo(LIMIT);
         return primes.get(nthPrimeNumberIndex);
     }
 }
