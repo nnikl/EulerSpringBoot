@@ -1,19 +1,47 @@
 package com.nnikl.EulerSpringBoot;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
 @Component
 @RequiredArgsConstructor
-public class InputWithRessources {
+public class Euler8 {
+
+    /**
+     * Calculates the largest product of 13 consecutive digits in the given number string.
+     * <p>
+     * The method iterates through each possible 13-digit window in `digitString`,
+     * multiplies all digits in that window to compute the product, and keeps track
+     * of the largest product found.
+     *
+     * @return the largest product of 13 consecutive digits
+     */
+    public long productEuler8() {
+        long biggestProduct = 0L;
+        long product = 1L;
+        char[] zeichenArray = digitString.toCharArray();
+        for (int i = 0; i < digitString.length() - 13; i++) {
+            for (int j = 0; j < 13; j++) {
+                char zeichen = zeichenArray[i + j];   // holt das i-te Zeichen
+                int digit = zeichen - '0';
+                product *= digit;
+                if (product > biggestProduct) {
+                    biggestProduct = product;
+                }
+            }
+            product = 1L;
+        }
+        return biggestProduct;
+    }
+
+
+    private final String digitString = loadNumberFromFile("/euler8_number.txt");
 
     /**
      * Loads the numeric content from the resource file <code>euler_number.txt</code>.
@@ -21,7 +49,7 @@ public class InputWithRessources {
      * @return a string containing the entire number from the resource file
      * @throws RuntimeException if the resource cannot be found or read
      */
-    public String loadNumberFromFile(String filePath) {
+    private String loadNumberFromFile(String filePath) {
 
         // Try-with-resources block: ensures that resources (InputStream, BufferedReader)
         // are automatically closed after usage, even if an exception occurs.
@@ -29,7 +57,7 @@ public class InputWithRessources {
                 // Get the resource file as an InputStream.
                 // Objects.requireNonNull(...) ensures that if the resource is not found,
                 // a NullPointerException is thrown immediately (instead of silently failing).
-                InputStream is = Objects.requireNonNull(InputWithRessources.class.getResourceAsStream(filePath));
+                InputStream is = Objects.requireNonNull(Euler8.class.getResourceAsStream(filePath));
 
                 // Wrap the InputStream with an InputStreamReader to convert raw bytes
                 // into characters, explicitly using UTF-8 as the character encoding.
@@ -48,4 +76,3 @@ public class InputWithRessources {
         }
     }
 }
-
