@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 @RequiredArgsConstructor
 public class Euler9 {
 
-    private int[] tripel;
+
     private static final int tripletSum = 1000;
 
     /**
@@ -23,7 +23,7 @@ public class Euler9 {
             for (int b = a + 1; b < tripletSum; b++) {
                 int c = tripletSum - a - b;
                 if (a * a + b * b == c * c) {
-                    tripel = new int[] {a, b, c};
+                    int[] tripel = new int[] {a, b, c};
                     return tripel;
                 }
             }
@@ -38,7 +38,7 @@ public class Euler9 {
      * @return the product a * b * c, or -1 if no triplet is found
      */
     public int tripletProduct() {
-        findPythagoreanTripletSum();
+        int[] tripel = findPythagoreanTripletSum();
         if (tripel == null) {
             return -1;
         }
