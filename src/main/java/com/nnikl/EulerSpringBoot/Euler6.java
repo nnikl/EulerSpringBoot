@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 @RequiredArgsConstructor
 public class Euler6 {
 
-    private final SumSquare sumSquare;
+    private final MathHelper sumSquare;
 
 
     /**

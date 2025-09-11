@@ -1,6 +1,8 @@
 package com.nnikl.EulerSpringBoot;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
+
 import java.util.LinkedList;
 import java.util.List;
 
@@ -8,7 +10,8 @@ import java.util.List;
  * Utility class for generating and checking prime numbers.
  */
 @Component
-public class PrimeNumbers {
+@RequiredArgsConstructor
+public class MathHelper {
 
     /**
      * Generates a list of prime numbers up to a given limit.
@@ -29,6 +32,7 @@ public class PrimeNumbers {
     /**
      * Checks whether a number is prime.
      * i*i checks only up to necessary limit for prime testing.
+     *
      * @param number the number to check.
      * @return true if the number is prime, false otherwise.
      */
@@ -39,4 +43,21 @@ public class PrimeNumbers {
         }
         return true;
     }
+
+    public int sumSquareWithoutBrackets() {
+        int sumSquareCalculate = 0;
+        for (int x = 1; x <= 100; x++) {
+            sumSquareCalculate += x * x;
+        }
+        return sumSquareCalculate;
+    }
+
+    public int sumSquaresInBrackets() {
+        int sumSquareCalculateNumbers = 0;
+        for (int x = 1; x <= 100; x++) {
+            sumSquareCalculateNumbers += x;
+        }
+        return sumSquareCalculateNumbers * sumSquareCalculateNumbers;
+    }
+
 }

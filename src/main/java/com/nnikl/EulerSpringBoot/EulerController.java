@@ -19,6 +19,9 @@ public class EulerController {
     @Autowired
     private Euler10 euler10;
 
+    @Autowired
+    private Euler9 euler9;
+
     /**
      * Returns a simple 404 response when accessing the root URL.
      */
@@ -43,7 +46,7 @@ public class EulerController {
 
     /**
      * REST endpoint that returns the sum of all prime numbers below the given limit.
-     *
+     * <p>
      * The limit is provided as a path variable "index". Internally, the index is
      * adjusted by subtracting 1 before calculating the sum.
      *
@@ -53,7 +56,20 @@ public class EulerController {
     @GetMapping(value = "/sumPrimeNumAddition/{index}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Long> sumOfPrimeNumberAdditionBelow(@PathVariable("index") int index) {
         int correctedIndex = index - 1;
-        long resultEuler10 = euler10.calculateSum(correctedIndex);
-        return ResponseEntity.status(200).body(resultEuler10);
+        long getResultEuler10 = euler10.calculateSum(correctedIndex);
+        return ResponseEntity.status(200).body(getResultEuler10);
+    }
+
+    /**
+     * REST endpoint to calculate the product of the Pythagorean triplet
+     * where a + b + c = 1000 and a² + b² = c².
+     *
+     * @return HTTP 200 response containing the product as JSON.
+     */
+    @GetMapping(value = "/Euler9/", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Integer> Euler9() {
+        int getResultEuler9 = euler9.tripletProduct();
+        return ResponseEntity.status(200).body(getResultEuler9);
     }
 }
+

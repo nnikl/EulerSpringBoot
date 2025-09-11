@@ -12,7 +12,7 @@ import java.util.List;
 public class Euler10 {
 
     @Autowired
-    private PrimeNumbers primeNumbersLimitInitializer;
+    private MathHelper primeNumbersLimitInitializer;
 
     /**
      * Calculates the sum of all prime numbers below the given limit.

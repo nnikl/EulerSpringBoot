@@ -6,8 +6,8 @@ import org.springframework.context.ApplicationContext;
 
 @SpringBootApplication
 
-public class EulerSpringApplication {
+public class EulerApplication {
     public static void main(String[] args) {
-        ApplicationContext context = SpringApplication.run(EulerSpringApplication.class, args);
+        ApplicationContext context = SpringApplication.run(EulerApplication.class, args);
     }
 }
