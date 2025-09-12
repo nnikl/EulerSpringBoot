@@ -13,6 +13,8 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class Euler8 {
 
+    private final String digitString = loadNumberFromFile("/euler8_number.txt");
+
     /**
      * Calculates the largest product of 13 consecutive digits in the given number string.
      * <p>
@@ -25,23 +27,20 @@ public class Euler8 {
     public long productEuler8() {
         long biggestProduct = 0L;
         long product = 1L;
-        char[] zeichenArray = digitString.toCharArray();
+        char[] charArray = digitString.toCharArray();
         for (int i = 0; i < digitString.length() - 13; i++) {
             for (int j = 0; j < 13; j++) {
-                char zeichen = zeichenArray[i + j];   // holt das i-te Zeichen
-                int digit = zeichen - '0';
+                char charDigit = charArray[i + j];   // holt das i-te Zeichen
+                int digit = charDigit - '0';
                 product *= digit;
-                if (product > biggestProduct) {
-                    biggestProduct = product;
-                }
+            }
+            if (product > biggestProduct) {
+                biggestProduct = product;
             }
             product = 1L;
         }
         return biggestProduct;
     }
-
-
-    private final String digitString = loadNumberFromFile("/euler8_number.txt");
 
     /**
      * Loads the numeric content from the resource file <code>euler_number.txt</code>.
