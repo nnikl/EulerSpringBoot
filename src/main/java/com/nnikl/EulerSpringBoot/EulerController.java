@@ -17,10 +17,14 @@ public class EulerController {
     private Euler7 euler7;
 
     @Autowired
-    private Euler10 euler10;
+    private Euler8 euler8;
 
     @Autowired
     private Euler9 euler9;
+
+    @Autowired
+    private Euler10 euler10;
+
 
     /**
      * Returns a simple 404 response when accessing the root URL.
@@ -45,6 +49,31 @@ public class EulerController {
     }
 
     /**
+     * REST endpoint to calculate the largest product of 13 consecutive digits
+     * in the 1000-digit number (Project Euler Problem 8).
+     *
+     * @return HTTP 200 response containing the largest product as JSON.
+     */
+    @GetMapping(value = "/Euler8/", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Long> Euler8() {
+        long getResultEuler9 = euler8.productEuler8();
+        return ResponseEntity.status(200).body(getResultEuler9);
+    }
+
+
+    /**
+     * REST endpoint to calculate the product of the Pythagorean triplet
+     * where a + b + c = 1000 and a² + b² = c².
+     *
+     * @return HTTP 200 response containing the product as JSON.
+     */
+    @GetMapping(value = "/Euler9/", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Integer> Euler9() {
+        int getResultEuler9 = euler9.tripletProduct();
+        return ResponseEntity.status(200).body(getResultEuler9);
+    }
+
+    /**
      * REST endpoint that returns the sum of all prime numbers below the given limit.
      * <p>
      * The limit is provided as a path variable "index". Internally, the index is
@@ -58,18 +87,6 @@ public class EulerController {
         int correctedIndex = index - 1;
         long getResultEuler10 = euler10.calculateSum(correctedIndex);
         return ResponseEntity.status(200).body(getResultEuler10);
-    }
-
-    /**
-     * REST endpoint to calculate the product of the Pythagorean triplet
-     * where a + b + c = 1000 and a² + b² = c².
-     *
-     * @return HTTP 200 response containing the product as JSON.
-     */
-    @GetMapping(value = "/Euler9/", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Integer> Euler9() {
-        int getResultEuler9 = euler9.tripletProduct();
-        return ResponseEntity.status(200).body(getResultEuler9);
     }
 }
 
